@@ -50,10 +50,10 @@ services:
       - "7076:7070"
 
   loadbalancer:
-    image: nginx:alpine
+    build: ./java-load-balancer
     restart: always
     ports:
-      - 7070:80
+      - "7070:8080"
     depends_on:
       - backend1
       - backend2
@@ -61,5 +61,3 @@ services:
       - backend4
       # - backend5
       - backend6
-    volumes:
-      - ./nginx.conf:/etc/nginx/conf.d/default.conf
